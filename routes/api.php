@@ -19,3 +19,7 @@ use App\Http\Controllers\Api\DemoTestInquiryController;
 
 // Demo Test Inquiries
 Route::post('/demo/test', [DemoTestInquiryController::class, 'store']);
+
+// Demo Test
+Route::post('/demo/test/{demoTest:ref}/activate', [DemoTestController::class, 'activate']);
+Route::post('/demo/test/{demoTest:ref}/deactivate', [DemoTestController::class, 'deactivate']);
