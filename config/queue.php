@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('QUEUE_CONNECTION', 'sync'),
+    'demo_job_queue' => env('QUEUE_CONNECTION', 'database'),
 
     /*
     |--------------------------------------------------------------------------

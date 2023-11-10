@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 use App\Models\DemoTestInquiry;
+use App\Jobs\InquiryJob;
 use Illuminate\Support\Facades\DB;
 
 class DemoTestInquiryController extends Controller
@@ -49,6 +50,8 @@ class DemoTestInquiryController extends Controller
         $inquiry->payload = json_encode($demoTestObjects);
         $inquiry->items_total_count = count($demoTestObjects);
         $inquiry->save();
+
+        InquiryJob::dispatchAfterResponse($inquiry->id);
 
         return response(['inquiry_id' => $inquiry->id]);
     }
